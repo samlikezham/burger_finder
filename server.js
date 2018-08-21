@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/burgers';
 const session = require('express-session');
 // const bodyParser = require('body-parser');
+const Burgers = require('./models/burgers')
 
 const app = express();
 const router = express.Router();
@@ -20,13 +21,10 @@ app.use(session({
     saveUninitialized: false
 }));
 
-// API path
-router.get('/', function(req, res) {
-  res.json({ message: 'API Initialized!'});
-});
+// controllers
+const burgersController = require('./controllers/burgers.js');
+app.use('/burgers', burgersController);
 
-// use Router to call on API
-app.use('/api', router);
 
 // listener
 app.listen(port, () => {
