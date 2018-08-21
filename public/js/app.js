@@ -2,9 +2,9 @@ class App extends React.Component {
 	constructor(props){
 		super(props)
 		this.accessHome = this.accessHome.bind(this)
-
 		this.state = {
-			home: false
+			home: false,
+			burger: null
 		}
 	}
 
@@ -14,13 +14,20 @@ class App extends React.Component {
 		})
 	}
 
-
 	render() {
 		return(
 			<div className="main">
-			
 
-			{(this.state.home) ? <Homepage /> : <Landing accessHome={this.accessHome} />}
+			{(this.state.home) ?
+				<Burgers 
+					handleSubmit={this.handleCreateSubmit} 
+					handleCreate={this.handleCreate} 
+					getBurger={this.getBurger}
+				/> 
+			    : <Landing 
+			    	accessHome={this.accessHome} 
+			    />
+			}
 			</div>
 		)
 	}

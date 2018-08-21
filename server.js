@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/burgers';
 const session = require('express-session');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const Burgers = require('./models/burgers')
 
 const app = express();
@@ -20,7 +20,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-// allows for Cross Origin Resource sharing
+// allows for Cross Origin Resource sharing (CORS errors)
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
