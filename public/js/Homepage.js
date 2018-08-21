@@ -2,7 +2,8 @@ class Homepage extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			burgers: []
+			burgers: [],
+			accessBurgerForm: false
 		}
 	}
 
@@ -14,18 +15,19 @@ class Homepage extends React.Component {
 	}
 
 	
-
 	render(){
-	  let items = this.state.burgers.map((item) => {
-      return(
-        <div key={item.id}>
-          <p>username: {item.name}</p>
-          <p>highest score: {item.image}</p>
-        </div>
+		return(
+		this.state.burgers.map((burger, id) => {
+			console.log(burger.name)
+			return(
+				<div key={id}>
+					<p>{burger.name}</p>
+					<img src={burger.image} />
+				</div>
+			)
+		})
        )
-     })
-	}
 
 
-
+	}	
 }
