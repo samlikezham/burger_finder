@@ -1,8 +1,8 @@
 .img {
     position: relative;
     float: left;
-    width:  100px;
-    height: 100px;
+    width:  200px;
+    height: 200px;
     background-position: 50% 50%;
     background-repeat:   no-repeat;
     background-size:     cover;

@@ -57,10 +57,10 @@ class Burgers extends React.Component {
 	        'Content-Type': 'application/json'
 	      }
 	    })
-	      .then(updatedPerson => {
-	        return updatedPerson.json()
+	      .then(updatedBurger => {
+	        return updatedBurger.json()
 	    })
-	      .then(jsonedPerson => {
+	      .then(jsonedBurger => {
 	        //need to update state
 	        this.getBurgers()
 	        this.toggleState('burgerListIsVisible', 'burgerIsVisible')
@@ -105,9 +105,19 @@ class Burgers extends React.Component {
 	
 	render(){
 		return(
-		    <div className="homeContainer">
-		    <a href="javascript:;" onClick={()=> {
-			this.toggleState('addBurgerIsVisible', 'burgerListIsVisible')}}>Add A Burger</a>
+		    <div className="container">
+
+		    {(this.state.burgerListIsVisible) ?
+		    <header class="jumbotron">
+		    	<div className="container">
+				<h1>Find Your Favorite Burger</h1>
+				<p>View our user's favorite picks</p>
+				<p>
+				<a className="btn btn-primary btn-large" href="javascript:;" onClick={()=> {
+					this.toggleState('addBurgerIsVisible', 'burgerListIsVisible')}}>Add Your Favorite Burger</a>
+				</p>
+				</div>
+			</header> : '' }
 
 		    {(this.state.addBurgerIsVisible) ?
 		    	<BurgerForm 
@@ -118,14 +128,27 @@ class Burgers extends React.Component {
 		    	/> : ''
 		    }
 		    {(this.state.burgerListIsVisible) ?
-		 		<div className="burgerIndex">
-		     		{this.state.burgers.map((burger, index) => (
-		        	<div key={index}>         
-		             	<p>{burger.name}</p>
-		             	<img className="img" src={burger.image} onClick={()=> {this.getBurger(burger); this.toggleState('burgerListIsVisible', 'burgerIsVisible')}}/>
-		             	<button className='button is-danger is-small' onClick={() => this.deleteBurger(burger, index)}>Delete</button>
-		        	</div>
-		      		))}
+		 		<div className="row">
+
+			 		<div className="row">
+			 		  <div className="col-lg-12">
+			 		  	<h3>Popular Burgers</h3>
+			 		  </div>
+			 		</div>
+			 		<div className="row">
+			 			{this.state.burgers.map((burger, index) => (
+		        			<div key={index} className="col-md-3 col-sm-6">
+		        				<div className="thumbnail"> 
+		        					<img className="img" src={burger.image} onClick={()=> {this.getBurger(burger); this.toggleState('burgerListIsVisible', 'burgerIsVisible')}}/>
+		        					<div className="caption">
+		        						<h4>{burger.name}</h4>
+		        					</div>
+		        				</div>       
+
+				             	<button className='button is-danger is-small' onClick={() => this.deleteBurger(burger, index)}>Delete</button>
+				    		</div>
+			      			))}
+				 	</div>
 		      	</div> : ''
 		  		}
 		      {(this.state.burgerIsVisible) ?
