@@ -37,5 +37,12 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+// update my burger
+router.put('/:id', (req, res) => {
+  Burgers.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedBurger) => {
+    res.json(updatedBurger)
+  });
+});
+
 
 module.exports = router;

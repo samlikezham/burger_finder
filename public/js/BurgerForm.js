@@ -9,6 +9,15 @@ class BurgerForm extends React.Component {
 			image: ''
 		}
 	}
+	componentDidMount(){
+		if(this.props.person){
+	      this.setState({
+		      name: this.props.burger.name,
+		      description: this.props.burger.description,
+		      image: this.props.burger.image
+		})
+    }
+	}
 	// onChange listeners for input fields
 	handleChange(event) {
 		console.log(event.target.id, this)
@@ -57,7 +66,6 @@ class BurgerForm extends React.Component {
             <input className='button is-primary' type='submit' />
           </div>
         </form>
-        	<button className="button is-link" onClick={()=> this.props.toggleState('burgerListIsVisible', 'addBurgerIsVisible')}>Cancel</button>
       </div>
     )
 	}
