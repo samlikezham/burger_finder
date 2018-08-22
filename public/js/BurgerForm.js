@@ -31,7 +31,12 @@ class BurgerForm extends React.Component {
 	}
 	render(){
 		return (
-      <div className='field'>
+      <div className='field container'>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
         <form onSubmit={this.handleSubmit}>
           <label className='label' for='name'>Name</label>
           <div className='control'>

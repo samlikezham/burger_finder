@@ -32,6 +32,10 @@ app.use(function(req, res, next) {
 // controllers
 const burgersController = require('./controllers/burgers.js');
 app.use('/burgers', burgersController);
+const sessionsController = require('./controllers/sessions.js');
+app.use('/sessions', sessionsController);
+const userController = require('./controllers/users.js')
+app.use('/users', userController);
 
 
 // listener

@@ -106,6 +106,14 @@ class Burgers extends React.Component {
 	render(){
 		return(
 		    <div className="container">
+		    {(this.state.burgerListIsVisible) ?
+		    	<Greeting 
+		    	username={this.props.username}
+		    	signOut={this.props.signOut}
+		    	accessHome={this.props.accessHome} 
+		    /> : ''
+		    }
+		  
 
 		    {(this.state.burgerListIsVisible) ?
 		    <header class="jumbotron">
