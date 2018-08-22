@@ -30,6 +30,7 @@ class Burgers extends React.Component {
 	}
 	// handles interaction with db
 	handleCreateSubmit(burger){
+		console.log(burger)
 		fetch('http://localhost:3000/burgers', {
 			body: JSON.stringify(burger),
 			method: 'POST',
@@ -86,21 +87,21 @@ class Burgers extends React.Component {
 		})
 	}
 	// delete - spread/rest operator to return all items
-	// deleteBurger(burger) {
-	// 	console.log(burger)
-	// 	fetch('http://localhost:3000/burgers/' + burger._id,
-	//     {
-	//       method: 'DELETE'
-	//     })
-	//     .then(data => {
-	//       this.setState({
-	//         burgers: [
-	//           ...this.state.burgers.slice(0, index),
-	//           ...this.state.burgers.slice(index + 1)
-	//         ]
-	//       })
-	//     })
-	// }
+	deleteBurger(burger, index) {
+		console.log(burger)
+		fetch('http://localhost:3000/burgers/' + burger._id,
+	    {
+	      method: 'DELETE'
+	    })
+	    .then(data => {
+	      this.setState({
+	        burgers: [
+	          ...this.state.burgers.slice(0, index),
+	          ...this.state.burgers.slice(index + 1)
+	        ]
+	      })
+	    })
+	}
 	
 	render(){
 		return(
@@ -128,12 +129,12 @@ class Burgers extends React.Component {
 		      	</div> : ''
 		  		}
 		      {(this.state.burgerIsVisible) ?
-		      <Burger
-		      	toggleState={this.toggleState}
-		      	burger={this.state.burger}
-		      	handleSubmit={this.handleUpdateSubmit}
-		      	/> : ''
-		      	}
+			      <Burger
+			      	toggleState={this.toggleState}
+			      	burger={this.state.burger}
+			      	handleSubmit={this.handleUpdateSubmit}
+			      	/> : ''
+			    }
 
 			</div>
 			 )

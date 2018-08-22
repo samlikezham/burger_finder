@@ -10,7 +10,7 @@ class BurgerForm extends React.Component {
 		}
 	}
 	componentDidMount(){
-		if(this.props.person){
+		if(this.props.burger){
 	      this.setState({
 		      name: this.props.burger.name,
 		      description: this.props.burger.description,
