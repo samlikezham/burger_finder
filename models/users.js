@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
-const Post = require('/posts.js')
 const Schema = mongoose.Schema;
 
 const userSchema = Schema({
   username: String,
-  password: String,
-  posts: [postSchema]
+  password: String
 });
 
 const User = mongoose.model('User', userSchema);

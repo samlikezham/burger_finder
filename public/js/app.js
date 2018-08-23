@@ -43,7 +43,7 @@ class App extends React.Component {
 							if (!!user) {
 								return
 							} else {
-								fetch('http://localhost:3000/users', {
+								fetch('http://localhost:3000/sessions', {
 									method: 'POST',
 									headers: {
 										'Accept': 'application/json, text/plain, */*',
@@ -78,6 +78,7 @@ class App extends React.Component {
 		this.setState({
 			home: false
 		})
+		fetch('http://localhost:3000/sessions')
 	}
 
 	render() {
