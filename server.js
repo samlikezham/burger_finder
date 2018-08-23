@@ -5,6 +5,9 @@ const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/burgers'
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const Burgers = require('./models/burgers')
+const Post = require('./models/post')
+const User = require('./models/users')
+const seedDB = require('./seeds')
 
 const app = express();
 const router = express.Router();
@@ -21,7 +24,7 @@ app.use(session({
     saveUninitialized: false
 }));
 // allows for Cross Origin Resource sharing (CORS errors)
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
@@ -48,3 +51,33 @@ mongoose.connect(mongoUri, { useNewUrlParser: true });
 mongoose.connection.on('open', () => {
 	console.log('connected to mongoose!!!!!!!!');
 });
+
+// seed db
+seedDB();
+
+Post.create({
+	name: "Mongoose Burger",
+	description: "text text text",
+	image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3585j96XiwooEqrJgHg3r37Bvsnn-36_XgyRhZSsVIX0wQ0llAA"
+}, (error, post) => {
+	User.findOne({username: "samlikezham"}, (error, foundUser) => {
+		if(error){
+			console.log(error);
+		} else {
+			foundUser.posts.push(post);
+			foundUser.save((error, data) =>{
+				if(error){
+					console.log(error);
+				} else {
+					console.log(data);
+				}
+			});
+		}
+	})
+})
+
+
+
+
+
+

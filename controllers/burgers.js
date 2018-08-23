@@ -16,10 +16,15 @@ router.get('/', (req, res) => {
 	});
 });
 
-// get route
+// show route
 router.get('/:id', (req, res)=>{
-    Burgers.findById(req.params.id, (err, foundBurger)=>{
-        res.send(foundBurger);
+    Burgers.findById(req.params.id).populate("comments").exec((error, foundBurger)=>{
+      if(error) {
+        console.log(error);
+      } else {
+        console.log(foundBurger)
+        res.send({burgers: foundBurger});
+      }
     });
 });
 

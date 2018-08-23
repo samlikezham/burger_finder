@@ -1,5 +1,20 @@
 class Burger extends React.Component {
+  constructor(props){
+    super(props)
+    this.burgerFormIsVisible = this.burgerFormIsVisible.bind(this)
+    this.state = {
+      burgerFormIsVisible: false
+    }
+  }
+  burgerFormIsVisible(){
+    let form = this.state.burgerFormIsVisible
+    this.setState({
+      burgerFormIsVisible: !form
+    })
+    console.log(this.state)
+  }
 	render() {
+    console.log(this.props.burger)
     return(
       <div className="container">
         <div className='tile is-ancestor'>
@@ -14,19 +29,24 @@ class Burger extends React.Component {
               <img className="img" src={this.props.burger.image} alt={this.props.burger.name} />
             </div>
           </div>
-          <div className='tile'>
+          <div className='tile container'>
             <div>
-              <h3 className='tile is-child box'><span>Name:</span> {this.props.burger.name} </h3>
-              <p className='tile is-child box'><span>Description:</span> {this.props.burger.description} </p>
+              <h3 className='tile is-child box'> {this.props.burger.name} </h3>
+              <p className='tile is-child box'><span><strong>Description:</strong></span> {this.props.burger.description} </p>
             </div>
             <div className='tile'>
+              <h5>Comments:</h5>
+              <p>{this.props.burger.comments}</p>
             </div>
           </div>
         </div>
+        <a href="javascript:;" onClick={()=>{
+          this.burgerFormIsVisible()}}>Edit Burger</a>
+        {(this.state.burgerFormIsVisible) ?
         <BurgerForm 
         	burger={this.props.burger}
         	handleSubmit={this.props.handleSubmit}
-        />
+        /> : ''}
       </div>
     )
   }

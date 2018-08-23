@@ -10,7 +10,6 @@ class Burgers extends React.Component {
 		this.state = {
 			burgers: [],
 			burger: {},
-			accessBurgerForm: true,
 			burgerListIsVisible: true,
 			addBurgerIsVisible: false,
 			burgerIsVisible: false
@@ -71,7 +70,10 @@ class Burgers extends React.Component {
 		fetch('http://localhost:3000/burgers')
 		.then(response => {
 			return response.json();
-		}).then(data => {this.setState({ burgers: data }) });
+		}).then(data => {this.setState({ 
+			burgers: data 
+		}) 
+	  });
 	}
 	// toggles from index/form/show pages
 	toggleState(st1, st2) {
@@ -113,8 +115,6 @@ class Burgers extends React.Component {
 		    	accessHome={this.props.accessHome} 
 		    /> : ''
 		    }
-		  
-
 		    {(this.state.burgerListIsVisible) ?
 		    <header class="jumbotron">
 		    	<div className="container">
@@ -150,6 +150,7 @@ class Burgers extends React.Component {
 		        					<img className="img" src={burger.image} onClick={()=> {this.getBurger(burger); this.toggleState('burgerListIsVisible', 'burgerIsVisible')}}/>
 		        					<div className="caption">
 		        						<h4>{burger.name}</h4>
+		        						<h4>{burger.comments.author}</h4>
 		        					</div>
 		        				</div>       
 
