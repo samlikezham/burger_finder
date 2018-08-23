@@ -78,7 +78,6 @@ class App extends React.Component {
 		this.setState({
 			home: false
 		})
-		fetch('http://localhost:3000/sessions')
 	}
 
 	render() {
