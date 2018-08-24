@@ -3,7 +3,7 @@ class Auth extends React.Component {
 
     let formFields = {}
     return(
-      <div className='login container' >
+      <div className='landing container' >
       <div className='field'>
         <form onSubmit={this.props.handleSubmit}>
           <div>

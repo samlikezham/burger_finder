@@ -29,7 +29,7 @@ class Burger extends React.Component {
               <img className="img" src={this.props.burger.image} alt={this.props.burger.name} />
             </div>
           </div>
-          <div className='tile container'>
+          <div className='tile container show'>
             <div>
               <h3 className='tile is-child box'> {this.props.burger.name} </h3>
               <p className='tile is-child box'><span><strong>Description:</strong></span> {this.props.burger.description} </p>
