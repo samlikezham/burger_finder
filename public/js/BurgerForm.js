@@ -26,16 +26,13 @@ class BurgerForm extends React.Component {
 	// passed down handleCreateSubmmit from parent component
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.handleSubmit(this.state)
+		this.props.handleUpdateSubmit(this.state)
 		console.log(this.state)
 	}
 	render(){
 		return (
-      <div className='field container'>
-      <br />
-      <br />
-      <br />
-      <br />
+      <div className='field container newBurger'>
+      <button className='button is-warning' onClick={()=> this.props.toggleState('burgerListIsVisible', 'addBurgerIsVisible')}>Back</button>
       <br />
         <form onSubmit={this.handleSubmit}>
           <label className='label' for='name'>Name</label>
@@ -50,7 +47,7 @@ class BurgerForm extends React.Component {
           </div>
           <label className='label' for='description'>Description</label>
           <div className='control'>
-            <input
+            <textarea
               className='input'
               type='text'
               onChange={this.handleChange}

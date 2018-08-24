@@ -163,7 +163,7 @@ class Burgers extends React.Component {
 			      <Burger
 			      	toggleState={this.toggleState}
 			      	burger={this.state.burger}
-			      	handleSubmit={this.handleUpdateSubmit}
+			      	handleUpdateSubmit={this.handleUpdateSubmit}
 			      	/> : ''
 			    }
 

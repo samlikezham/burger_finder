@@ -25,7 +25,7 @@ class Burger extends React.Component {
               <br />
               <br />
           </div>
-            <div>
+            <div className="container">
               <img className="img" src={this.props.burger.image} alt={this.props.burger.name} />
             </div>
           </div>
@@ -43,9 +43,10 @@ class Burger extends React.Component {
         <a href="javascript:;" onClick={()=>{
           this.burgerFormIsVisible()}}>Edit Burger</a>
         {(this.state.burgerFormIsVisible) ?
-        <BurgerForm 
+        <BurgerForm
+          inheritedState={this.state}
         	burger={this.props.burger}
-        	handleSubmit={this.props.handleSubmit}
+        	handleUpdateSubmit={this.props.handleUpdateSubmit}
         /> : ''}
       </div>
     )
