@@ -55,26 +55,26 @@ mongoose.connection.on('open', () => {
 // seed db
 seedDB();
 
-Post.create({
-	name: "Mongoose Burger",
-	description: "text text text",
-	image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3585j96XiwooEqrJgHg3r37Bvsnn-36_XgyRhZSsVIX0wQ0llAA"
-}, (error, post) => {
-	User.findOne({username: "samlikezham"}, (error, foundUser) => {
-		if(error){
-			console.log(error);
-		} else {
-			foundUser.posts.push(post);
-			foundUser.save((error, data) =>{
-				if(error){
-					console.log(error);
-				} else {
-					console.log(data);
-				}
-			});
-		}
-	})
-})
+// Post.create({
+// 	name: "Mongoose Burger",
+// 	description: "text text text",
+// 	image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3585j96XiwooEqrJgHg3r37Bvsnn-36_XgyRhZSsVIX0wQ0llAA"
+// }, (error, post) => {
+// 	User.findOne({username: "samlikezham"}, (error, foundUser) => {
+// 		if(error){
+// 			console.log(error);
+// 		} else {
+// 			foundUser.posts.push(post);
+// 			foundUser.save((error, data) =>{
+// 				if(error){
+// 					console.log(error);
+// 				} else {
+// 					console.log(data);
+// 				}
+// 			});
+// 		}
+// 	})
+// })
 
 
 
