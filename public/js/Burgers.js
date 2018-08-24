@@ -150,7 +150,6 @@ class Burgers extends React.Component {
 		        					<img className="img" src={burger.image} onClick={()=> {this.getBurger(burger); this.toggleState('burgerListIsVisible', 'burgerIsVisible')}}/>
 		        					<div className="caption">
 		        						<h4>{burger.name}</h4>
-		        						<h4>{burger.comments.author}</h4>
 		        					</div>
 		        				</div>       
 
